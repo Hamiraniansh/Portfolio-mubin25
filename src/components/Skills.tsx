@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const technicalStack = [
@@ -45,7 +46,12 @@ const technicalStack = [
             { name: "Figma", icon: "devicon-figma-plain", color: "#F24E1E" },
             { name: "Vercel", icon: "devicon-vercel-original", color: "#FFFFFF" },
             { name: "Netlify", icon: "devicon-netlify-plain", color: "#00C7B7" },
-            { name: "Docker", icon: "devicon-docker-plain", color: "#2496ED" }
+            { name: "Docker", icon: "devicon-docker-plain", color: "#2496ED" },
+            { name: "Linux", icon: "devicon-linux-plain", color: "#FCC624" },
+            { name: "Ubuntu", icon: "devicon-ubuntu-plain", color: "#E95420" },
+            { name: "Arch", icon: "devicon-archlinux-plain", color: "#1793D1" },
+            { name: "Kali", icon: "devicon-linux-plain", color: "#557C94" },
+            { name: "Windows", icon: "devicon-windows8-original", color: "#00ADEF" }
         ]
     },
     {
@@ -61,61 +67,126 @@ const technicalStack = [
     }
 ];
 
-const coreSkills = [
-    "Full Stack Dev", "Software Architecture", "System Optimization", "Problem Solving", "Web Dev", "UI/UX Engineering"
-];
+const SectionFlipCard = ({
+    title,
+    color,
+    children,
+    className = "",
+    frontIcon = null
+}: {
+    title: string;
+    color: string;
+    children: React.ReactNode;
+    className?: string;
+    frontIcon?: string | null;
+}) => {
+    const [isFlipped, setIsFlipped] = useState(false);
 
-const supportingSkills = [
-    "Fast Learner", "Linux", "Open Source", "Tech-Curious", "Editing", "Photography"
-];
+    return (
+        <div
+            className={`perspective-1000 cursor-pointer ${className} h-full group`}
+            onMouseEnter={() => setIsFlipped(true)}
+            onMouseLeave={() => setIsFlipped(false)}
+            onClick={() => setIsFlipped(!isFlipped)}
+        >
+            <motion.div
+                className="relative w-full h-full preserve-3d"
+                initial={false}
+                animate={{ rotateY: isFlipped ? 180 : 0 }}
+                transition={{ type: "spring", stiffness: 150, damping: 20 }}
+                style={{ transformStyle: 'preserve-3d' }}
+            >
+                {/* Front Side: Minimalist Designed Box */}
+                <div
+                    className="absolute inset-0 backface-hidden glass-card flex flex-col items-center justify-center rounded-2xl border border-white/5 overflow-hidden"
+                    style={{ backfaceVisibility: 'hidden' }}
+                >
+                    <div
+                        className="absolute w-32 h-32 blur-[60px] opacity-10 group-hover:opacity-20 transition-opacity"
+                        style={{ backgroundColor: color }}
+                    ></div>
+                    {frontIcon && <i className={`${frontIcon} text-3xl md:text-4xl mb-4 text-white/10 group-hover:text-white/30 transition-all duration-500`}></i>}
+                    <h3 className="text-sm md:text-base font-black text-white/60 group-hover:text-white uppercase tracking-[0.3em] text-center px-4 relative z-10 transition-colors">
+                        {title}
+                    </h3>
+                    <div className="absolute bottom-4 text-[7px] md:text-[8px] font-black text-slate-600 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                        CLICK OR HOVER TO REVEAL
+                    </div>
+                </div>
+
+                {/* Back Side: The Details (Skills Grid) */}
+                <div
+                    className="absolute inset-0 backface-hidden glass-card flex flex-col p-4 md:p-6 rounded-2xl border border-white/20 bg-[#0a0a0b] overflow-hidden shadow-2xl"
+                    style={{
+                        backfaceVisibility: 'hidden',
+                        transform: 'rotateY(180deg)'
+                    }}
+                >
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none"></div>
+                    <div className="relative z-10 flex flex-col h-full">
+                        <h4
+                            className="text-[10px] md:text-[11px] font-black uppercase tracking-widest mb-6 py-1 opacity-40"
+                        >
+                            {title}
+                        </h4>
+                        <div className="flex-1 min-h-0">
+                            {children}
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+        </div>
+    );
+};
+
+const SkillItem = ({ name, icon, color }: { name: string; icon: string; color: string }) => (
+    <div className="flex items-center gap-3 group/skill cursor-default py-1">
+        <i
+            className={`${icon} text-base md:text-xl text-slate-500 group-hover/skill:brightness-125 transition-all`}
+            style={{ color: color }}
+        ></i>
+        <span className="text-[10px] md:text-[11px] font-black text-slate-400 group-hover/skill:text-white uppercase transition-colors tracking-tight truncate">
+            {name}
+        </span>
+    </div>
+);
+
+const coreSkills = ["Full Stack Dev", "Software Architecture", "System Optimization", "Problem Solving", "Web Dev", "UI/UX Engineering"];
+const supportingSkills = ["Fast Learner", "Open Source", "Tech-Curious", "Editing", "Photography"];
 
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.3,
-            delayChildren: 0.4
+            staggerChildren: 0.1,
+            delayChildren: 0.2
         }
     }
 };
 
 const itemVariants = {
-    hidden: {
-        opacity: 0,
-        y: 60,
-        x: -40,
-        scale: 0.9
-    },
-    visible: {
-        opacity: 1,
-        y: 0,
-        x: 0,
-        scale: 1
-    }
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1 }
 };
 
-const swipeTransition = {
-    duration: 0.8,
-    ease: "easeOut"
-} as const;
+const swipeTransition = { duration: 0.6, ease: "easeOut" };
 
 export const Skills = () => {
     return (
         <section id="skills" className="snap-section px-4 py-8 relative overflow-hidden flex flex-col justify-center bg-transparent">
             <div className="container max-w-7xl mx-auto relative z-10 flex flex-col h-full max-h-[88vh] min-h-0 pt-2 lg:pt-4">
-                {/* Unified Header - Ultrpact Shift */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="flex items-end justify-between mb-3"
+                    className="flex items-end justify-between mb-4"
                 >
                     <div>
                         <h2 className="text-2xl md:text-3xl font-black text-white tracking-tighter uppercase leading-none">
                             EXPERTISE <span className="text-gradient">& STACK</span>
                         </h2>
-                        <p className="text-slate-500 text-[9px] md:text-[10px] font-bold tracking-[0.2em] mt-1 uppercase">Core Competencies & Digital Toolset</p>
+                        <p className="text-slate-500 text-[9px] md:text-[10px] font-bold tracking-[0.2em] mt-1 uppercase">interactive technology landscape</p>
                     </div>
                 </motion.div>
 
@@ -124,219 +195,93 @@ export const Skills = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-6 md:grid-rows-[auto_1fr_1fr] gap-2 lg:gap-3 flex-1 min-h-0"
+                    className="grid grid-cols-1 md:grid-cols-6 md:grid-rows-[auto_1fr_1fr] gap-3 lg:gap-4 flex-1 min-h-0"
                 >
-                    {/* 1. Programming Languages - Tall Block */}
-                    <motion.div
-                        variants={itemVariants}
-                        transition={swipeTransition}
-                        className="md:col-span-2 md:row-span-3 p-3 md:p-5 glass-card relative group overflow-hidden flex flex-col min-h-0"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"></div>
-                        <div className="relative z-10 flex flex-col h-full">
-                            <h3 className="text-[12px] font-black text-white/50 group-hover:text-white uppercase tracking-widest mb-4 flex items-center transition-colors underline decoration-primary/30 underline-offset-4">
-                                {technicalStack[0].title}
-                            </h3>
-                            <div className="grid grid-cols-2 gap-y-3 gap-x-4 flex-1 items-start min-h-0 overflow-hidden">
+                    {/* 1. Programming Languages */}
+                    <motion.div variants={itemVariants} className="md:col-span-2 md:row-span-3">
+                        <SectionFlipCard title="Languages" color="#00f2fe" frontIcon="fa-solid fa-code">
+                            <div className="grid grid-cols-2 gap-y-4 gap-x-4">
                                 {technicalStack[0].skills.map((skill, i) => (
-                                    <div key={i} className="flex items-center gap-3 group/skill cursor-default">
-                                        <div
-                                            className="w-1.5 h-1.5 bg-white/10 group-hover/skill:scale-125 transition-all rounded-full"
-                                            style={{
-                                                '--hover-bg': skill.color,
-                                                '--hover-shadow': `0 0 12px ${skill.color}`
-                                            } as React.CSSProperties}
-                                            onMouseEnter={(e) => {
-                                                e.currentTarget.style.backgroundColor = skill.color;
-                                                e.currentTarget.style.boxShadow = `0 0 12px ${skill.color}`;
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.currentTarget.style.backgroundColor = '';
-                                                e.currentTarget.style.boxShadow = '';
-                                            }}
-                                        ></div>
-                                        <i
-                                            className={`${skill.icon} text-base md:text-xl text-slate-500 transition-all`}
-                                            style={{ transition: 'all 0.3s' }}
-                                            onMouseEnter={(e) => {
-                                                e.currentTarget.style.color = skill.color;
-                                                e.currentTarget.style.filter = `drop-shadow(0 0 10px ${skill.color}) brightness(1.5)`;
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.currentTarget.style.color = '';
-                                                e.currentTarget.style.filter = '';
-                                            }}
-                                        ></i>
-                                        <span className="text-[10px] md:text-[11px] font-black text-slate-400 group-hover/skill:text-white uppercase transition-colors tracking-tighter truncate">{skill.name}</span>
-                                    </div>
+                                    <SkillItem key={i} {...skill} />
                                 ))}
                             </div>
-                        </div>
+                        </SectionFlipCard>
                     </motion.div>
 
                     {/* 2. Core Competencies */}
-                    <motion.div
-                        variants={itemVariants}
-                        transition={swipeTransition}
-                        className="md:col-span-3 md:row-span-1 p-3 md:p-4 glass-card group flex flex-col"
-                    >
-                        <h3 className="text-[10px] font-black text-primary uppercase tracking-[0.2em] mb-3">Core Competencies</h3>
-                        <div className="flex flex-wrap gap-2 mt-auto">
-                            {coreSkills.map((skill, i) => (
-                                <span key={i} className="px-2.5 py-1.5 rounded-lg bg-white/[0.03] border border-white/5 text-[9px] font-bold uppercase text-slate-400 hover:text-white hover:border-primary/30 transition-all cursor-default tracking-widest">
-                                    {skill}
-                                </span>
-                            ))}
-                        </div>
+                    <motion.div variants={itemVariants} className="md:col-span-3 md:row-span-1">
+                        <SectionFlipCard title="Systems" color="#00f2fe" frontIcon="fa-solid fa-brain">
+                            <div className="flex flex-wrap gap-2">
+                                {coreSkills.map((skill, i) => (
+                                    <span key={i} className="px-3 py-2 rounded-xl bg-white/[0.04] border border-white/5 text-[10px] font-black uppercase text-slate-400 hover:text-white hover:border-primary/40 transition-all tracking-widest cursor-default">
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
+                        </SectionFlipCard>
                     </motion.div>
 
                     {/* 3. Aptitudes */}
-                    <motion.div
-                        variants={itemVariants}
-                        transition={swipeTransition}
-                        className="md:col-span-1 md:row-span-1 p-3 md:p-4 glass-card group flex flex-col"
-                    >
-                        <h3 className="text-[10px] font-black text-secondary uppercase tracking-[0.2em] mb-3">Aptitudes</h3>
-                        <div className="flex flex-wrap gap-x-2 gap-y-1 text-[9px] text-slate-500 font-bold uppercase mt-auto">
-                            {supportingSkills.map((s, i) => (
-                                <span key={i} className="hover:text-white transition-colors cursor-default whitespace-nowrap">
-                                    {s}{i < supportingSkills.length - 1 ? " • " : ""}
-                                </span>
-                            ))}
-                        </div>
+                    <motion.div variants={itemVariants} className="md:col-span-1 md:row-span-1">
+                        <SectionFlipCard title="Soft Skills" color="#4facfe" frontIcon="fa-solid fa-bolt">
+                            <div className="flex flex-col gap-3 text-[10px] text-slate-400 font-black uppercase tracking-widest mt-1">
+                                {supportingSkills.map((s, i) => (
+                                    <span key={i} className="hover:text-white transition-colors cursor-default flex items-center gap-2">
+                                        <span className="w-1 h-1 bg-secondary rounded-full"></span>
+                                        {s}
+                                    </span>
+                                ))}
+                            </div>
+                        </SectionFlipCard>
                     </motion.div>
 
                     {/* 4. Engines */}
-                    <motion.div
-                        variants={itemVariants}
-                        transition={swipeTransition}
-                        className="md:col-span-2 md:row-span-1 p-3 md:p-4 glass-card group flex flex-col min-h-0"
-                    >
-                        <h3 className="text-[12px] font-black text-white/50 group-hover:text-white uppercase mb-3 tracking-widest transition-colors underline decoration-secondary/30 underline-offset-4">Engines</h3>
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 flex-1 items-center min-h-0 overflow-hidden">
-                            {technicalStack[1].skills.map((skill, i) => (
-                                <div key={i} className="flex items-center gap-3 group/skill cursor-default">
-                                    <div
-                                        className="w-1.5 h-1.5 bg-white/10 group-hover/skill:scale-125 transition-all rounded-full"
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.backgroundColor = skill.color;
-                                            e.currentTarget.style.boxShadow = `0 0 12px ${skill.color}`;
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.backgroundColor = '';
-                                            e.currentTarget.style.boxShadow = '';
-                                        }}
-                                    ></div>
-                                    <i
-                                        className={`${skill.icon} text-base md:text-xl text-slate-500 transition-all`}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.color = skill.color;
-                                            e.currentTarget.style.filter = `drop-shadow(0 0 10px ${skill.color}) brightness(1.5)`;
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.color = '';
-                                            e.currentTarget.style.filter = '';
-                                        }}
-                                    ></i>
-                                    <span className="text-[10px] md:text-[11px] font-black text-slate-400 group-hover/skill:text-white uppercase transition-colors tracking-tighter truncate">{skill.name}</span>
-                                </div>
-                            ))}
-                        </div>
+                    <motion.div variants={itemVariants} className="md:col-span-2 md:row-span-1">
+                        <SectionFlipCard title="Frameworks" color="#4facfe" frontIcon="fa-solid fa-layer-group">
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                                {technicalStack[1].skills.map((skill, i) => (
+                                    <SkillItem key={i} {...skill} />
+                                ))}
+                            </div>
+                        </SectionFlipCard>
                     </motion.div>
 
                     {/* 5. Core Tools */}
-                    <motion.div
-                        variants={itemVariants}
-                        transition={swipeTransition}
-                        className="md:col-span-2 md:row-span-1 p-3 md:p-4 glass-card group flex flex-col min-h-0"
-                    >
-                        <h3 className="text-[11px] md:text-[12px] font-black text-slate-400 uppercase tracking-widest mb-3">Core Tools</h3>
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 flex-1 items-center min-h-0 overflow-hidden">
-                            {technicalStack[2].skills.slice(0, 8).map((skill, i) => (
-                                <div key={i} className="flex items-center gap-3 group/skill cursor-default">
-                                    <i
-                                        className={`${skill.icon} text-base md:text-xl text-slate-500 transition-all group-hover/skill:scale-110`}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.color = skill.color;
-                                            e.currentTarget.style.filter = `drop-shadow(0 0 12px ${skill.color}) brightness(1.5)`;
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.color = '';
-                                            e.currentTarget.style.filter = '';
-                                        }}
-                                    ></i>
-                                    <span className="text-[10px] md:text-[11px] font-black group-hover/skill:text-white uppercase transition-colors tracking-widest truncate text-slate-400">{skill.name}</span>
-                                </div>
-                            ))}
-                        </div>
+                    <motion.div variants={itemVariants} className="md:col-span-2 md:row-span-1">
+                        <SectionFlipCard title="Power Tools" color="#ffffff" frontIcon="fa-solid fa-wrench">
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                                {technicalStack[2].skills.slice(0, 8).map((skill, i) => (
+                                    <SkillItem key={i} {...skill} />
+                                ))}
+                            </div>
+                        </SectionFlipCard>
                     </motion.div>
 
                     {/* 6. Utility */}
-                    <motion.div
-                        variants={itemVariants}
-                        transition={swipeTransition}
-                        className="md:col-span-2 md:row-span-1 p-3 md:p-4 glass-card group flex flex-col min-h-0"
-                    >
-                        <h3 className="text-[11px] md:text-[12px] font-black text-slate-400 uppercase tracking-widest mb-3">Utility</h3>
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 flex-1 items-center min-h-0 overflow-hidden">
-                            {technicalStack[2].skills.slice(8).map((skill, i) => (
-                                <div key={i} className="flex items-center gap-3 group/skill cursor-default">
-                                    <i
-                                        className={`${skill.icon} text-base md:text-xl text-slate-500 transition-all group-hover/skill:scale-110`}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.color = skill.color;
-                                            e.currentTarget.style.filter = `drop-shadow(0 0 12px ${skill.color}) brightness(1.5)`;
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.color = '';
-                                            e.currentTarget.style.filter = '';
-                                        }}
-                                    ></i>
-                                    <span className="text-[10px] md:text-[11px] font-black group-hover/skill:text-white uppercase transition-colors tracking-widest truncate text-slate-400">{skill.name}</span>
-                                </div>
-                            ))}
-                        </div>
+                    <motion.div variants={itemVariants} className="md:col-span-2 md:row-span-1">
+                        <SectionFlipCard title="Automation" color="#ffffff" frontIcon="fa-solid fa-screwdriver-wrench">
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                                {technicalStack[2].skills.slice(8).map((skill, i) => (
+                                    <SkillItem key={i} {...skill} />
+                                ))}
+                            </div>
+                        </SectionFlipCard>
                     </motion.div>
 
                     {/* 7. Data Labs */}
-                    <motion.div
-                        variants={itemVariants}
-                        transition={swipeTransition}
-                        className="md:col-span-2 md:row-span-1 p-3 md:p-4 glass-card group flex flex-col min-h-0"
-                    >
-                        <h3 className="text-[12px] font-black text-[#ff007a]/60 group-hover:text-[#ff007a] uppercase mb-3 tracking-widest transition-colors">Data Labs</h3>
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 flex-1 items-center min-h-0 overflow-hidden">
-                            {technicalStack[3].skills.map((skill, i) => (
-                                <div key={i} className="flex items-center gap-3 group/skill cursor-default">
-                                    <div
-                                        className="w-1.5 h-1.5 bg-white/10 group-hover/skill:scale-125 transition-all rounded-full"
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.backgroundColor = skill.color;
-                                            e.currentTarget.style.boxShadow = `0 0 12px ${skill.color}`;
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.backgroundColor = '';
-                                            e.currentTarget.style.boxShadow = '';
-                                        }}
-                                    ></div>
-                                    <i
-                                        className={`${skill.icon} text-sm md:text-base text-slate-500 transition-all`}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.color = skill.color;
-                                            e.currentTarget.style.filter = `drop-shadow(0 0 10px ${skill.color}) brightness(1.5)`;
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.color = '';
-                                            e.currentTarget.style.filter = '';
-                                        }}
-                                    ></i>
-                                    <span className="text-[10px] md:text-[11px] font-black text-slate-400 group-hover/skill:text-white uppercase transition-colors tracking-widest truncate">{skill.name}</span>
-                                </div>
-                            ))}
-                        </div>
+                    <motion.div variants={itemVariants} className="md:col-span-2 md:row-span-1">
+                        <SectionFlipCard title="Persistence" color="#ff007a" frontIcon="fa-solid fa-database">
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                                {technicalStack[3].skills.map((skill, i) => (
+                                    <SkillItem key={i} {...skill} />
+                                ))}
+                            </div>
+                        </SectionFlipCard>
                     </motion.div>
                 </motion.div>
             </div>
         </section>
     );
 };
+
+export default Skills;
