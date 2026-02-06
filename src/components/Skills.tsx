@@ -98,7 +98,7 @@ const SectionFlipCard = ({
             >
                 {/* Front Side: Minimalist Designed Box */}
                 <div
-                    className="absolute inset-0 backface-hidden glass-card flex flex-col items-center justify-center rounded-2xl border border-white/5 overflow-hidden"
+                    className="absolute inset-0 backface-hidden glass-card flex flex-col items-center justify-center rounded-2xl overflow-hidden"
                     style={{ backfaceVisibility: 'hidden' }}
                 >
                     <div
@@ -116,7 +116,7 @@ const SectionFlipCard = ({
 
                 {/* Back Side: The Details (Skills Grid) */}
                 <div
-                    className="absolute inset-0 backface-hidden glass-card flex flex-col p-4 md:p-6 rounded-2xl border border-white/20 bg-[#0a0a0b] overflow-hidden shadow-2xl"
+                    className="absolute inset-0 backface-hidden glass-card flex flex-col p-4 md:p-6 rounded-2xl bg-[#0a0a0b] overflow-hidden shadow-2xl"
                     style={{
                         backfaceVisibility: 'hidden',
                         transform: 'rotateY(180deg)'

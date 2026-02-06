@@ -50,7 +50,7 @@ export const Contact = () => {
                         </div>
 
                         {/* Social Links Sub-section */}
-                        <div className="mt-8 pt-8 border-t border-white/5">
+                        <div className="mt-8 pt-4">
                             <p className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-4">Social Connect</p>
                             <div className="flex flex-wrap gap-2.5">
                                 <a href="https://github.com/mubin25s" target="_blank" className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 hover:border-primary hover:text-primary transition-all duration-300"><i className="fa-brands fa-github text-lg"></i></a>
