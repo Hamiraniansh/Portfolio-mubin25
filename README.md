@@ -1,73 +1,94 @@
-# React + TypeScript + Vite
+# 💼 Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my personal portfolio website built to showcase my skills, projects, and experience using modern web technologies.  
+It serves as an online resume and a central hub to explore my work.
 
-Currently, two official plugins are available:
+🚀 **Live Demo:** https://mubin25s.github.io/Portfolio/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ⚛️ **React-Based Architecture** – Component-driven UI
+- 📱 **Responsive Design** – Optimized for desktop, tablet, and mobile
+- 🎨 **Modern UI** – Clean, sharp, and minimal design
+- 🧩 **Project Showcase** – Highlighted projects with details
+- 📄 **Resume Section** – View and download resume
+- ⚡ **High Performance** – Fast load times and optimized assets
+- 🔧 **Scalable Structure** – Easy to extend with animations and backend
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tech Stack & Frameworks
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🌐 Frontend
+- **React.js** – Component-based UI library
+- **JavaScript (ES6+)** – Application logic
+- **HTML5** – Markup structure
+- **CSS3** – Styling and responsiveness
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 🎨 Styling & UI Tools
+- **Custom CSS** – Handcrafted styles
+- **CSS Flexbox & Grid** – Layout system
+- **Google Fonts** – Typography
+- **Font Awesome** – Icons
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### ⚙️ Libraries & APIs
+- **React Hooks** – State and lifecycle management
+- **DOM APIs** – Dynamic interactions
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 🗄️ Backend / Database (Optional)
+- **Supabase** – Backend as a Service
+  - PostgreSQL database
+  - SQL schema included (`supabase_setup.sql`)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+> ℹ️ The live version runs primarily as a frontend application. Supabase is included for future dynamic content and scalability.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 📂 Project Structure
+
+
+---
+
+## 🎯 Project Goals
+
+- Build a strong professional online presence
+- Demonstrate React and frontend development skills
+- Keep the codebase clean, modular, and scalable
+- Support future enhancements like animations and 3D visuals
+
+---
+
+## 🚀 Deployment
+
+This project is deployed using **GitHub Pages**.
+
+### Deployment Steps:
+1. Clone or fork the repository
+2. Install dependencies with `npm install`
+3. Build the project using `npm run build`
+4. Deploy the `build` folder via GitHub Pages
+
+---
+
+## 🔮 Planned Enhancements
+
+- 🌙 Dark / Light mode
+- 🎥 Advanced animations & 3D effects
+- 🧊 Three.js / WebGL integration
+- 📡 Dynamic content from Supabase
+- 🔍 Project filtering & search
+
+---
+
+## 🤝 Contributions
+
+Ideas, suggestions, and improvements are welcome!  
+Feel free to open an issue or submit a pull request 🚀
+
+---
+
+## 📜 License
+
+This project is open-source and available under the **MIT License**.
