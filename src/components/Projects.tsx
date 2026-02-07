@@ -174,7 +174,7 @@ export const Projects = () => {
                                         {project.title.toUpperCase()}
                                     </h3>
 
-                                    <p className="text-slate-200 text-xs md:text-sm font-medium">
+                                    <p className="text-slate-200 text-xs md:text-sm font-medium h-12 md:h-14 overflow-hidden">
                                         {project.description}
                                     </p>
                                 </div>
