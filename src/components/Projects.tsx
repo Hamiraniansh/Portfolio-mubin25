@@ -27,7 +27,7 @@ const projects = [
     {
         title: "Portfolio",
         description: "Stunning personal portfolio with dark theme, glassmorphism, and interactive animations.",
-        link: "https://portfolio-sage-ten-21.vercel.app/",
+        link: "https://portfolio-five-silk-97.vercel.app/",
         github: "https://github.com/mubin25s/Portfolio",
         image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8"
     },

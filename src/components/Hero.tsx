@@ -42,8 +42,8 @@ export const Hero = () => {
     }, [currentText, isDeleting, roleIndex, speed, roles]);
 
     return (
-        <section id="home" className="snap-section overflow-hidden px-6 pt-24 md:pt-16">
-            <div className="container max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-6 lg:gap-20">
+        <section id="home" className="snap-section overflow-hidden px-6 pt-28 md:pt-16 flex flex-col justify-center">
+            <div className="container max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-4 lg:gap-20">
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
