@@ -192,7 +192,7 @@ export const Skills = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-6 md:grid-rows-[1fr_1fr] gap-3 lg:gap-4 flex-1 min-h-0"
+                    className="grid grid-cols-1 md:grid-cols-6 md:grid-rows-[1fr_1fr] gap-2 md:gap-3 lg:gap-4 flex-1 min-h-0 overflow-y-auto md:overflow-visible no-scrollbar pb-10"
                 >
                     {/* 1. Programming Languages */}
                     <motion.div variants={itemVariants} className="md:col-span-2 md:row-span-2">
