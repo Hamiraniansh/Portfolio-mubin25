@@ -7,7 +7,7 @@ import * as random from 'maath/random/dist/maath-random.esm';
 function Stars() {
     const ref = useRef<any>(null);
     // Further reduced star count for maximum performance
-    const sphere = useMemo(() => random.inSphere(new Float32Array(1500), { radius: 1.5 }), []);
+    const sphere = useMemo(() => random.inSphere(new Float32Array(800), { radius: 1.5 }), []);
 
     useFrame((_state, delta) => {
         if (ref.current) {
@@ -43,7 +43,7 @@ export const CanvasBackground = () => {
                     stencil: false,
                     depth: false
                 }}
-                dpr={[1, 1.5]} // More aggressive DRP limit
+                dpr={[1, 1]} // strictly limit to 1x for performance
             >
                 <Stars />
             </Canvas>
