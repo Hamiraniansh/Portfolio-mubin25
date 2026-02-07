@@ -3,7 +3,7 @@
 This is my personal portfolio website built to showcase my skills, projects, and experience using modern web technologies.  
 It serves as an online resume and a central hub to explore my work.
 
-🚀 **Live Demo:** https://mubin25s.github.io/Portfolio/
+🚀 **Live Demo:** https://portfolio-five-silk-97.vercel.app/
 
 ---
 
