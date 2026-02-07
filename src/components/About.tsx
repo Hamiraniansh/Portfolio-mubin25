@@ -92,7 +92,7 @@ const Card = ({ data, index, isTop, onSwipe, total }: { data: CardData; index: n
                 rotate: isTop ? rotate : 0,
                 opacity: isTop ? opacity : 1 - (total - 1 - index) * 0.05,
                 scale: 1 - (total - 1 - index) * 0.05,
-                y: (total - 1 - index) * 15,
+                y: (total - 1 - index) * 10,
                 aspectRatio: '2.5/3.5'
             }}
             initial={{
@@ -105,7 +105,7 @@ const Card = ({ data, index, isTop, onSwipe, total }: { data: CardData; index: n
             animate={{
                 scale: 1 - (total - 1 - index) * 0.05,
                 opacity: isTop ? 1 : 1 - (total - 1 - index) * 0.05,
-                y: (total - 1 - index) * 15,
+                y: (total - 1 - index) * 10,
                 x: exitX,
                 rotate: 0 // Animate to 0 rotation (straight)
             }}
@@ -312,11 +312,11 @@ export const About = () => {
                     <span className="font-semibold">Back to Home</span>
                 </Link>
 
-                <div className="flex-1 flex flex-col items-center justify-start pt-16 min-h-[400px]">
+                <div className="flex-1 flex flex-col items-center justify-start pt-6 min-h-[400px]">
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-5xl font-black mb-8 text-center"
+                        className="text-4xl md:text-5xl font-black mb-4 text-center"
                     >
                         More <span className="text-primary">About Me</span>
                     </motion.h1>
