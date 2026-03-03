@@ -23,6 +23,7 @@
     "maath": "^0.10.8",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-github-calendar": "^5.0.5",
     "react-router-dom": "^7.13.0",
     "sass": "^1.97.3",
     "three": "^0.182.0"

@@ -1,15 +1,17 @@
 import { motion } from 'framer-motion';
-import { Send, MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 
 export const Contact = () => {
     return (
         <section id="contact" className="snap-section px-6 relative">
             <div className="container max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    {/* Left Side: Contact Info */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
+                        className="max-w-xl"
                     >
                         <h2 className="text-3xl md:text-5xl font-black mb-4 leading-tight">
                             Let&apos;s Build <br />
@@ -66,32 +68,90 @@ export const Contact = () => {
                         </div>
                     </motion.div>
 
+                    {/* Right Side: Unique Themed Visual */}
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className="glass-card p-8 relative overflow-hidden"
+                        className="hidden lg:flex justify-center items-center relative h-full w-full min-h-[400px]"
                     >
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                        <form className="space-y-4 relative z-10" onSubmit={(e) => e.preventDefault()}>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div className="space-y-1.5">
-                                    <label className="text-[10px] font-bold text-slate-400 uppercase">Your Name</label>
-                                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary transition-colors" placeholder="John Doe" />
+                        {/* Core glowing background */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/20 rounded-full blur-[100px]"></div>
+
+                        {/* Animated abstract network */}
+                        <div className="relative w-full max-w-sm aspect-square">
+                            {/* Central interactive-looking orb */}
+                            <motion.div
+                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full glass-card flex items-center justify-center z-20 border-primary/30 border shadow-[0_0_40px_rgba(128,1,31,0.3)]"
+                                animate={{
+                                    boxShadow: ["0 0 20px rgba(128,1,31,0.3)", "0 0 50px rgba(128,1,31,0.6)", "0 0 20px rgba(128,1,31,0.3)"]
+                                }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            >
+                                <div className="text-primary animate-pulse flex items-center justify-center">
+                                    <MapPin size={40} className="drop-shadow-[0_0_10px_rgba(128,1,31,0.8)]" />
                                 </div>
-                                <div className="space-y-1.5">
-                                    <label className="text-[10px] font-bold text-slate-400 uppercase">Email Address</label>
-                                    <input type="email" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary transition-colors" placeholder="john@example.com" />
-                                </div>
-                            </div>
-                            <div className="space-y-1.5">
-                                <label className="text-[10px] font-bold text-slate-400 uppercase">Message</label>
-                                <textarea rows={3} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Tell me about your project..."></textarea>
-                            </div>
-                            <button className="btn-primary w-full flex items-center justify-center gap-2 py-2.5 text-sm">
-                                Send Message <Send size={16} />
-                            </button>
-                        </form>
+                            </motion.div>
+
+                            {/* Orbiting Elements */}
+                            <motion.div
+                                className="absolute top-[10%] left-[20%] w-14 h-14 rounded-2xl glass-card flex items-center justify-center z-10 border-white/10"
+                                animate={{ y: [0, -15, 0], x: [0, 10, 0], rotate: [0, 10, 0] }}
+                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                            >
+                                <Mail size={24} className="text-white/70" />
+                            </motion.div>
+
+                            <motion.div
+                                className="absolute bottom-[20%] right-[10%] w-16 h-16 rounded-full glass-card flex items-center justify-center z-10 border-white/10"
+                                animate={{ y: [0, 20, 0], x: [0, -15, 0], scale: [1, 1.05, 1] }}
+                                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                            >
+                                <Phone size={28} className="text-primary" />
+                            </motion.div>
+
+                            <motion.div
+                                className="absolute top-[25%] right-[10%] w-12 h-12 rounded-xl glass-card flex items-center justify-center z-10 border-white/10 bg-primary/5"
+                                animate={{ y: [0, 15, 0], x: [0, 15, 0], rotate: [0, -15, 0] }}
+                                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                            >
+                                <i className="fa-brands fa-discord text-xl text-white/70"></i>
+                            </motion.div>
+
+                            <motion.div
+                                className="absolute bottom-[10%] left-[25%] w-12 h-12 rounded-full glass-card flex items-center justify-center z-10 border-white/10 bg-white/5"
+                                animate={{ y: [0, -10, 0], x: [0, -15, 0] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                            >
+                                <i className="fa-brands fa-github text-xl text-white/70"></i>
+                            </motion.div>
+
+                            {/* Decorative Lines and Rings */}
+                            <svg className="absolute inset-0 w-full h-full -z-10" viewBox="0 0 200 200">
+                                <motion.circle
+                                    cx="100" cy="100" r="50"
+                                    stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="none"
+                                    initial={{ pathLength: 0 }}
+                                    whileInView={{ pathLength: 1 }}
+                                    transition={{ duration: 2, ease: "easeOut" }}
+                                />
+                                <motion.circle
+                                    cx="100" cy="100" r="75"
+                                    stroke="rgba(128,1,31,0.2)" strokeWidth="1" fill="none" strokeDasharray="4 6"
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                                    className="origin-center"
+                                />
+                                <motion.circle
+                                    cx="100" cy="100" r="100"
+                                    stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" fill="none" strokeDasharray="2 8"
+                                    animate={{ rotate: -360 }}
+                                    transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                                    className="origin-center"
+                                />
+                            </svg>
+                        </div>
                     </motion.div>
                 </div>
             </div>

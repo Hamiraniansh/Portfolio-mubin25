@@ -14,7 +14,7 @@ export const Navbar = () => {
         window.addEventListener('scroll', handleScroll);
 
         // Intersection Observer for active section tracking
-        const sections = ['home', 'projects', 'skills', 'contact'];
+        const sections = ['home', 'projects', 'activity', 'skills', 'contact'];
         const observerOptions = {
             root: null,
             rootMargin: '-20% 0px -70% 0px', // Trigger when section is in the top portion
@@ -47,6 +47,7 @@ export const Navbar = () => {
     const navLinks = [
         { name: 'About', href: '#home' },
         { name: 'Projects', href: '#projects' },
+        { name: 'Activity', href: '#activity' },
         { name: 'Skills & Stack', href: '#skills' },
         { name: 'Contact', href: '#contact' },
     ];
