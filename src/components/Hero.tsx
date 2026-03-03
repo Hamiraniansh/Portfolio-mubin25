@@ -5,10 +5,8 @@ import { ChevronDown } from 'lucide-react';
 
 export const Hero = () => {
     const roles = [
-        "Creative Developer",
-        "UI/UX Designer",
-        "Full Stack Engineer",
-        "Tech Enthusiast"
+        "Frontend Developer",
+        "Full Stack Developer"
     ];
 
     const [roleIndex, setRoleIndex] = useState(0);
@@ -50,6 +48,16 @@ export const Hero = () => {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="flex-1 text-center lg:text-left z-10"
                 >
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 mb-6"
+                    >
+                        <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
+                        <span className="text-xs md:text-sm font-medium text-slate-300">Currently building a MERN-based event management platform</span>
+                    </motion.div>
+
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -80,7 +88,7 @@ export const Hero = () => {
                         transition={{ delay: 0.4 }}
                         className="text-slate-400 text-sm md:text-base max-w-lg mb-8 leading-relaxed mx-auto lg:mx-0"
                     >
-                        Curious, tech-driven, and constantly evolving—an editor and software engineer with a sharp eye for detail and a drive to build, learn, and grow beyond limits.
+                        I build modern web applications with React & Node.js
                     </motion.p>
 
                     <motion.div
@@ -89,9 +97,8 @@ export const Hero = () => {
                         transition={{ delay: 0.5 }}
                         className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8"
                     >
-                        <a href="#contact" className="btn-primary py-2 px-6 text-sm">Get In Touch</a>
-                        <a href="#projects" className="px-6 py-2 rounded-full border border-white/10 hover:bg-white/5 transition-all duration-300 backdrop-blur-sm font-semibold text-sm">View Projects</a>
-                        <Link to="/about" className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm">More About Me</Link>
+                        <a href="#projects" className="btn-primary py-2 px-6 text-sm">View Projects</a>
+                        <a href="#contact" className="px-6 py-2 rounded-full border border-white/10 hover:bg-white/5 transition-all duration-300 backdrop-blur-sm font-semibold text-sm">Contact Me</a>
                     </motion.div>
 
                     <motion.div
@@ -103,13 +110,7 @@ export const Hero = () => {
                         {[
                             { icon: "fa-brands fa-github", href: "https://github.com/mubin25s", color: "#fff" },
                             { icon: "fa-brands fa-linkedin-in", href: "https://linkedin.com/in/fathum-mubin-090937280", color: "#0077b5" },
-                            { icon: "fa-solid fa-envelope", href: "mailto:fathummubin26@gmail.com", color: "#80011f" },
-                            { icon: "fa-brands fa-reddit-alien", href: "https://www.reddit.com/u/mubin25s/s/HFGmFrHUkV", color: "#ff4500" },
-                            { icon: "fa-brands fa-x-twitter", href: "https://x.com/FathumMubin26", color: "#fff" },
-                            { icon: "fa-brands fa-discord", href: "https://discord.com/users/mubin.26", color: "#5865f2" },
-                            { icon: "fa-brands fa-whatsapp", href: "https://wa.me/8801302910017", color: "#25d366" },
-                            { icon: "fa-brands fa-instagram", href: "https://www.instagram.com/fathum.mubin.26", color: "#e4405f" },
-                            { icon: "fa-brands fa-facebook-f", href: "https://www.facebook.com/share/14RTXWtMn8Y/", color: "#1877f2" }
+                            { icon: "fa-solid fa-envelope", href: "mailto:fathummubin26@gmail.com", color: "#80011f" }
                         ].map((social, i) => (
                             <motion.a
                                 key={i}

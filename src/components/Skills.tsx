@@ -3,66 +3,54 @@ import { motion } from 'framer-motion';
 
 const technicalStack = [
     {
-        title: "Programming Languages",
+        title: "Frontend",
+        color: "#61DAFB",
+        frontIcon: "fa-solid fa-desktop",
         skills: [
+            { name: "React", icon: "devicon-react-original", color: "#61DAFB" },
+            { name: "TypeScript", icon: "devicon-typescript-plain", color: "#3178C6" },
+            { name: "Tailwind", icon: "devicon-tailwindcss-original", color: "#06B6D4" },
             { name: "JS", icon: "devicon-javascript-plain", color: "#F7DF1E" },
-            { name: "Java", icon: "devicon-java-plain", color: "#007396" },
-            { name: "C++", icon: "devicon-cplusplus-plain", color: "#00599C" },
-            { name: "C#", icon: "devicon-csharp-plain", color: "#239120" },
-            { name: "Dart", icon: "devicon-dart-plain", color: "#0175C2" },
-            { name: "PHP", icon: "devicon-php-plain", color: "#777BB4" },
-            { name: "C", icon: "devicon-c-plain", color: "#A8B9CC" },
-            { name: "Shell", icon: "devicon-bash-plain", color: "#4EAA25" },
-            { name: "TS", icon: "devicon-typescript-plain", color: "#3178C6" },
-            { name: "Python", icon: "devicon-python-plain", color: "#3776AB" },
             { name: "HTML5", icon: "devicon-html5-plain", color: "#E34F26" },
             { name: "CSS3", icon: "devicon-css3-plain", color: "#1572B6" }
         ]
     },
     {
-        title: "Frameworks",
+        title: "Backend",
+        color: "#339933",
+        frontIcon: "fa-solid fa-server",
         skills: [
-            { name: "React", icon: "devicon-react-original", color: "#61DAFB" },
             { name: "Node.js", icon: "devicon-nodejs-plain", color: "#339933" },
             { name: "Express.js", icon: "devicon-express-original", color: "#000000" },
-            { name: "Laravel", icon: "devicon-laravel-original", color: "#FF2D20" },
-            { name: "Tailwind", icon: "devicon-tailwindcss-original", color: "#06B6D4" },
-            { name: "Bootstrap", icon: "devicon-bootstrap-plain", color: "#7952B3" },
-            { name: "Socket.io", icon: "devicon-socketio-original", color: "#010101" }
+            { name: "PHP", icon: "devicon-php-plain", color: "#777BB4" },
+            { name: "Java", icon: "devicon-java-plain", color: "#007396" },
+            { name: "C++", icon: "devicon-cplusplus-plain", color: "#00599C" },
+            { name: "Python", icon: "devicon-python-plain", color: "#3776AB" }
+        ]
+    },
+    {
+        title: "Database",
+        color: "#47A248",
+        frontIcon: "fa-solid fa-database",
+        skills: [
+            { name: "MongoDB", icon: "devicon-mongodb-plain", color: "#47A248" },
+            { name: "MySQL", icon: "devicon-mysql-plain", color: "#4479A1" },
+            { name: "Postgres", icon: "devicon-postgresql-plain", color: "#4169E1" },
+            { name: "Firebase", icon: "devicon-firebase-plain", color: "#FFCA28" },
+            { name: "Supabase", icon: "devicon-supabase-plain", color: "#3ECF8E" }
         ]
     },
     {
         title: "Tools",
+        color: "#F05032",
+        frontIcon: "fa-solid fa-wrench",
         skills: [
             { name: "Git", icon: "devicon-git-plain", color: "#F05032" },
+            { name: "Docker", icon: "devicon-docker-plain", color: "#2496ED" },
             { name: "GitHub", icon: "devicon-github-original", color: "#FFFFFF" },
             { name: "VS Code", icon: "devicon-vscode-plain", color: "#007ACC" },
-            { name: "NPM", icon: "devicon-npm-original-wordmark", color: "#CB3837" },
-            { name: "Vite", icon: "devicon-vite-original", color: "#646CFF" },
-            { name: "XAMPP", icon: "devicon-apache-plain", color: "#FB503B" },
-            { name: "CodeBlocks", icon: "fa-solid fa-cube", color: "#2E5D87" },
-            { name: "Cloudflare", icon: "devicon-cloudflare-plain", color: "#F38020" },
             { name: "Postman", icon: "devicon-postman-plain", color: "#FF6C37" },
-            { name: "Figma", icon: "devicon-figma-plain", color: "#F24E1E" },
-            { name: "Vercel", icon: "devicon-vercel-original", color: "#FFFFFF" },
-            { name: "Netlify", icon: "devicon-netlify-plain", color: "#00C7B7" },
-            { name: "Docker", icon: "devicon-docker-plain", color: "#2496ED" },
-            { name: "Linux", icon: "devicon-linux-plain", color: "#FCC624" },
-            { name: "Ubuntu", icon: "devicon-ubuntu-plain", color: "#E95420" },
-            { name: "Arch", icon: "devicon-archlinux-plain", color: "#1793D1" },
-            { name: "Kali", icon: "devicon-linux-plain", color: "#557C94" },
-            { name: "Windows", icon: "devicon-windows8-original", color: "#00ADEF" }
-        ]
-    },
-    {
-        title: "Databases",
-        skills: [
-            { name: "MySQL", icon: "devicon-mysql-plain", color: "#4479A1" },
-            { name: "Postgres", icon: "devicon-postgresql-plain", color: "#4169E1" },
-            { name: "MongoDB", icon: "devicon-mongodb-plain", color: "#47A248" },
-            { name: "Supabase", icon: "devicon-supabase-plain", color: "#3ECF8E" },
-            { name: "Firebase", icon: "devicon-firebase-plain", color: "#FFCA28" },
-            { name: "MariaDB", icon: "devicon-mariadb-plain", color: "#003545" }
+            { name: "Linux", icon: "devicon-linux-plain", color: "#FCC624" }
         ]
     }
 ];
@@ -98,7 +86,7 @@ const SectionFlipCard = ({
             >
                 {/* Front Side: Minimalist Designed Box */}
                 <div
-                    className="absolute inset-0 backface-hidden glass-card flex flex-col items-center justify-center rounded-2xl overflow-hidden"
+                    className="absolute inset-0 backface-hidden glass-card flex flex-col items-center justify-center rounded-2xl overflow-hidden bg-white/[0.03] border border-white/5"
                     style={{ backfaceVisibility: 'hidden' }}
                 >
                     <div
@@ -116,7 +104,7 @@ const SectionFlipCard = ({
 
                 {/* Back Side: The Details (Skills Grid) */}
                 <div
-                    className="absolute inset-0 backface-hidden glass-card border-0 flex flex-col p-3 md:p-4 rounded-2xl bg-[#0a0a0b] overflow-hidden shadow-2xl"
+                    className="absolute inset-0 backface-hidden glass-card border-0 flex flex-col p-4 md:p-6 rounded-2xl bg-[#0a0a0b] overflow-hidden shadow-2xl border border-white/5"
                     style={{
                         backfaceVisibility: 'hidden',
                         transform: 'rotateY(180deg)'
@@ -125,11 +113,11 @@ const SectionFlipCard = ({
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none"></div>
                     <div className="relative z-10 flex flex-col h-full">
                         <h4
-                            className="text-[10px] md:text-[11px] font-black uppercase tracking-widest mb-2 py-1 opacity-40"
+                            className="text-[10px] md:text-[11px] font-black uppercase tracking-widest mb-4 py-1 opacity-40 border-b border-white/10"
                         >
                             {title}
                         </h4>
-                        <div className="flex-1 min-h-0">
+                        <div className="flex-1 min-h-0 flex items-center">
                             {children}
                         </div>
                     </div>
@@ -140,12 +128,12 @@ const SectionFlipCard = ({
 };
 
 const SkillItem = ({ name, icon, color }: { name: string; icon: string; color: string }) => (
-    <div className="flex items-center gap-3 group/skill cursor-default py-1">
+    <div className="flex items-center gap-3 group/skill cursor-default py-2 hover:bg-white/5 px-2 rounded-lg transition-colors">
         <i
-            className={`${icon} text-base md:text-xl text-slate-500 group-hover/skill:brightness-125 transition-all`}
+            className={`${icon} text-lg md:text-2xl text-slate-500 group-hover/skill:brightness-125 transition-all`}
             style={{ color: color }}
         ></i>
-        <span className="text-[10px] md:text-[11px] font-black text-slate-400 group-hover/skill:text-white uppercase transition-colors tracking-tight truncate">
+        <span className="text-[11px] md:text-xs font-bold text-slate-400 group-hover/skill:text-white transition-colors tracking-tight truncate">
             {name}
         </span>
     </div>
@@ -171,20 +159,21 @@ const itemVariants = {
 
 export const Skills = () => {
     return (
-        <section id="skills" className="snap-section px-4 py-8 relative overflow-hidden flex flex-col justify-center bg-transparent">
-            <div className="container max-w-7xl mx-auto relative z-10 flex flex-col h-full max-h-[88vh] min-h-0 pt-2 lg:pt-4">
+        <section id="skills" className="snap-section px-4 py-20 relative overflow-hidden flex flex-col justify-center bg-transparent min-h-screen">
+            <div className="container max-w-7xl mx-auto relative z-10 flex flex-col">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="flex items-end justify-between mb-4"
+                    className="flex flex-col mb-12"
                 >
-                    <div>
-                        <h2 className="text-2xl md:text-3xl font-black text-white tracking-tighter uppercase leading-none">
-                            EXPERTISE <span className="text-gradient">& STACK</span>
-                        </h2>
-                        <p className="text-slate-500 text-[9px] md:text-[10px] font-bold tracking-[0.2em] mt-1 uppercase">interactive technology landscape</p>
-                    </div>
+                    <h2 className="text-3xl md:text-4xl font-black text-white tracking-tighter uppercase leading-none mb-2">
+                        Technical <span className="text-primary">Skills</span>
+                    </h2>
+                    <div className="w-20 h-1 bg-primary mb-4"></div>
+                    <p className="text-slate-400 text-sm md:text-base max-w-2xl">
+                        A focused overview of the technologies and tools I use to build robust, scalable, and modern applications.
+                    </p>
                 </motion.div>
 
                 <motion.div
@@ -192,61 +181,23 @@ export const Skills = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-6 md:grid-rows-[1fr_1fr] gap-2 md:gap-3 lg:gap-4 flex-1 min-h-0 overflow-y-auto md:overflow-visible no-scrollbar pb-10"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 min-h-[400px]"
                 >
-                    {/* 1. Programming Languages */}
-                    <motion.div variants={itemVariants} className="md:col-span-2 md:row-span-2">
-                        <SectionFlipCard title="Languages" color="#80011f" frontIcon="fa-solid fa-code">
-                            <div className="grid grid-cols-2 gap-y-4 gap-x-4">
-                                {technicalStack[0].skills.map((skill, i) => (
-                                    <SkillItem key={i} {...skill} />
-                                ))}
-                            </div>
-                        </SectionFlipCard>
-                    </motion.div>
-                    {/* 4. Engines */}
-                    <motion.div variants={itemVariants} className="md:col-span-2 md:row-span-1">
-                        <SectionFlipCard title="Frameworks" color="#5c0016" frontIcon="fa-solid fa-layer-group">
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-                                {technicalStack[1].skills.map((skill, i) => (
-                                    <SkillItem key={i} {...skill} />
-                                ))}
-                            </div>
-                        </SectionFlipCard>
-                    </motion.div>
-
-                    {/* 5. Core Tools */}
-                    <motion.div variants={itemVariants} className="md:col-span-2 md:row-span-1">
-                        <SectionFlipCard title="Power Tools" color="#ffffff" frontIcon="fa-solid fa-wrench">
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-                                {technicalStack[2].skills.slice(0, 8).map((skill, i) => (
-                                    <SkillItem key={i} {...skill} />
-                                ))}
-                            </div>
-                        </SectionFlipCard>
-                    </motion.div>
-
-                    {/* 6. Utility */}
-                    <motion.div variants={itemVariants} className="md:col-span-2 md:row-span-1">
-                        <SectionFlipCard title="Automation" color="#ffffff" frontIcon="fa-solid fa-screwdriver-wrench">
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-                                {technicalStack[2].skills.slice(8).map((skill, i) => (
-                                    <SkillItem key={i} {...skill} />
-                                ))}
-                            </div>
-                        </SectionFlipCard>
-                    </motion.div>
-
-                    {/* 7. Data Labs */}
-                    <motion.div variants={itemVariants} className="md:col-span-2 md:row-span-1">
-                        <SectionFlipCard title="Persistence" color="#80011f" frontIcon="fa-solid fa-database">
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-                                {technicalStack[3].skills.map((skill, i) => (
-                                    <SkillItem key={i} {...skill} />
-                                ))}
-                            </div>
-                        </SectionFlipCard>
-                    </motion.div>
+                    {technicalStack.map((category, idx) => (
+                        <motion.div key={idx} variants={itemVariants} className="col-span-1">
+                            <SectionFlipCard
+                                title={category.title}
+                                color={category.color}
+                                frontIcon={category.frontIcon}
+                            >
+                                <div className="grid grid-cols-1 w-full gap-y-1">
+                                    {category.skills.map((skill, i) => (
+                                        <SkillItem key={i} {...skill} />
+                                    ))}
+                                </div>
+                            </SectionFlipCard>
+                        </motion.div>
+                    ))}
                 </motion.div>
             </div>
         </section>

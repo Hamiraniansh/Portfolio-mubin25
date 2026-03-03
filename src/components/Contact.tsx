@@ -19,7 +19,7 @@ export const Contact = () => {
                             I&apos;m currently open for new projects and collaborations. If you have any idea, feel free to reach out!
                         </p>
 
-                        <div className="space-y-4">
+                        <div className="space-y-4 shadow-sm">
                             <div className="flex items-center gap-4 group">
                                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                                     <Mail size={18} />
@@ -29,7 +29,7 @@ export const Contact = () => {
                                     <a href="mailto:fathummubin26@gmail.com" className="text-base font-semibold hover:text-primary transition-colors">fathummubin26@gmail.com</a>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-4 group">
+                            <div className="flex items-center gap-4 group mt-2">
                                 <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
                                     <Phone size={18} />
                                 </div>
@@ -38,7 +38,7 @@ export const Contact = () => {
                                     <a href="https://wa.me/8801302910017" className="text-base font-semibold hover:text-secondary transition-colors">+880 1302 910017</a>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-4 group">
+                            <div className="flex items-center gap-4 group mt-2">
                                 <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:scale-110 transition-transform">
                                     <MapPin size={18} />
                                 </div>
