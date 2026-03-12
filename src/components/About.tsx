@@ -40,7 +40,7 @@ const Card = ({ data, index, isTop, onSwipe, total }: { data: CardData; index: n
         rotate: (Math.random() - 0.5) * 720
     }), []);
 
-    const handleDragEnd = (_: any, info: any) => {
+    const handleDragEnd = (_: React.MouseEvent, info: { offset: { x: number; y: number } }) => {
         if (!isTop) return;
         const threshold = 100;
         if (info.offset.x > threshold) {

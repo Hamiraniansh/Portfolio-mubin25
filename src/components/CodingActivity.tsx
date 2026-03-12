@@ -99,7 +99,6 @@ export const CodingActivity = () => {
     const statsRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(statsRef, { once: true, margin: '-60px' });
     const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-    const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
     const prevCurrentRef = useRef<number | null>(null);
     const prevMaxRef = useRef<number | null>(null);
 
@@ -108,10 +107,6 @@ export const CodingActivity = () => {
 
     const animatedCurrent = useCountUp(displayCurrentStreak, 1400);
     const animatedMax = useCountUp(displayMaxStreak, 1800);
-
-    const startCountdown = () => {
-        if (countdownRef.current) clearInterval(countdownRef.current);
-    };
 
     const fetchStreaks = async (manual = false) => {
         if (manual) setLoading(true);
@@ -142,7 +137,6 @@ export const CodingActivity = () => {
 
             // Force Calendar to remount and fetch updated total contributions
             setRefreshKey(k => k + 1);
-            startCountdown();
         } catch (error) {
             console.error('Error fetching GitHub streak data:', error);
         } finally {
@@ -155,7 +149,6 @@ export const CodingActivity = () => {
         intervalRef.current = setInterval(() => fetchStreaks(), REFRESH_INTERVAL * 1000);
         return () => {
             if (intervalRef.current) clearInterval(intervalRef.current);
-            if (countdownRef.current) clearInterval(countdownRef.current);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
